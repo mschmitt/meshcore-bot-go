@@ -254,6 +254,7 @@ After sending a message, the bot listens for the message to be repeated back by 
 - `{{.Message}}` — Original message text
 - `{{.Match}}` — Map of named regex capture groups
 - `{{.Timestamp}}` — Message timestamp
+- `{{.Localtime}}` — Local timestamp
 - `{{.SNR}}` — Signal-to-Noise Ratio
 - `{{.RSSI}}` — Received Signal Strength Indicator
 - `{{.Hops}}` — Number of hops
@@ -266,6 +267,7 @@ After sending a message, the bot listens for the message to be repeated back by 
 
 **Built-in Functions:**
 - `formatPathBytes` — Formats raw path hashes into a readable string.
+- `formatTime` — Formats epoch time from `.Timestamp` and `.Localtime` to local `HH:MM:SS`
 
 ## Example Configs
 

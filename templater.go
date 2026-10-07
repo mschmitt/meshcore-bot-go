@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strings"
 	"text/template"
+	"time"
 )
 
 type Templater struct {
@@ -14,6 +15,7 @@ type Templater struct {
 func NewTemplater() *Templater {
 	return &Templater{funcMap: template.FuncMap{
 		"formatPathBytes": formatPathBytes,
+		"formatTime": formatTime,
 	}}
 }
 
@@ -55,3 +57,12 @@ func formatPathBytes(paths [][]byte) string {
 	}
 	return strings.Join(parts, ", ")
 }
+
+func formatTime(timestamp any) string {
+	tsType := fmt.Sprintf("%T", timestamp)
+	if ( tsType == "uint32" ) {
+		timestamp = int64(timestamp.(uint32))
+	}
+	return time.Unix(timestamp.(int64), 0).Format("15:04:05")
+}
+

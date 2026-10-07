@@ -6,6 +6,7 @@ import (
 	"log/slog"
 	"regexp"
 	"sync"
+	"time"
 
 	meshcore "github.com/meshcore-go/meshcore-go"
 	"github.com/meshcore-go/meshcore-go/node"
@@ -133,6 +134,7 @@ func (t *ChannelTrigger) handlePacket(pkt *meshcore.Packet) {
 			"Message":      msg.Text,
 			"Match":        captures,
 			"Timestamp":    msg.Timestamp,
+			"Localtime":	time.Now().Unix(),
 			"SNR":          pkt.SNR,
 			"RSSI":         pkt.RSSI,
 			"Hops":         pkt.PathHashCount(),
